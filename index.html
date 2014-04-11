@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html ng-app="pwgen">
+  <head>
+    <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
+    
+    <script src="pbkdf2.js"></script>
+    <script src="core.js"></script>
+    <script src="enc-base64.js"></script>
+    <script src="jquery-2.1.0.js"></script>
+    <script src="angular.js"></script>
+    <!--<script src="bootstrap.js"></script>-->
+    <script src="angular-animate.js"></script>
+    <script src="angular-strap.min.js"></script>
+    <script src="angular-strap.tpl.min.js"></script>
+    <script src="pwgen.js"></script>
+  <title>pwgen</title>
+  </head>
+  <body>
+    <div class="container" ng-controller="PwGen">
+      <div class="page-header">
+        <h1>pwgen</h1>
+      </div>
+      
+      <div class="form-group">
+        <label for="userName" title="this is salt, to frustrate brute force attempts. It is saved in your browser, to save typing it later">User name</label>
+        <input type="text" class="form-control" id="userName" ng-model="userName">
+      </div>
+      
+      <div class="form-group">
+        <label for="siteName" title="this is salt, to mitigate password re-use attacks">Site name</label>
+        <input type="text" class="form-control" id="siteName" ng-model="siteName" ng-options="site for site in sites" bs-typeahead>
+      </div>
+      
+      <div class="form-group">
+        <label for="pw1" title="this will never be saved anywhere">Passphrase</label>
+        <input type="password" class="form-control" id="pw1" ng-model="pw1">
+      </div>
+      
+      <div class="form-group">
+        <label for="pw2" title="this will never be saved anywhere">Confirm Passphrase</label>
+        <input type="password" class="form-control" id="pw2" ng-model="pw2">
+      </div>
+      
+      <div class="form-group">
+        <label for="password">Site Password</label>
+        <input type="text" class="form-control" id="password" ng-value="password" disabled>
+      </div>
+      
+      <button ng-click="generate()" class="btn btn-primary btn-xl">Generate Password</button>
+    </div>
+  </body>
+</html>
